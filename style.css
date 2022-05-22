@@ -1,3 +1,241 @@
-h1 {
+/*el símbolo # indica a css que estamos buscando un elemento de tipo id*/
+#titulo {
     color: tomato;
+}
+
+/*el símbolo . indica a css que estamos buscando un elemento de tipo clase*/
+.texto{
+    color: slateblue;
+}
+
+/*Para seleccionar una etiqueta de p que contiene 1 clase hacemos lo siguiente*/
+/*Le indicamos a la página que solo queremos agregarle un estilo css a las etiquetas de p que también contengan la clase especial*/
+p.especial{
+    color: mediumseagreen;
+}
+/*El color se aplicó a las 2 etiquetas de p que contenian la clase especial*/ 
+/*Vemos entonces que dependiendo del orden en el cual nosotros escribamos nuestro css, este se puede anteponer a algo que hayamos definido antes*/
+/*LO QUE ESCRIBAMOS AL FINAL DE NUESTRO CÓDIGO CSS VA A TENER PRIORIDAD CON RESPECTO A LO QUE HAYAMOS ESCRITO ANTES*/
+/*Todas las etiquetas de div que contengan hijos de etiqueta p quiero que tengan el siguiente estilo:*/
+div p {
+    color: aquamarine;
+}
+
+div h2, div h3 {
+    color: brown;
+}
+
+/*Para seleccionar todos los elementos que tenemos dentro del html:*/ 
+* {
+    font-size: 24px;
+    /* color: black; */
+}
+/*El selector universal aplica las propiedades solo si estas no han sido definidas por otros selectores, por eso no se aplicó la propiedad de color negro*/
+
+/*Alternativas para elegir colores:
+1)poner el nombre del color
+2)utilizar la convención rgb
+3)utilizar hexagesimal
+4)utilizar valores hsl*/
+
+/*Ejemplo con valores hexagesimales: (van con #)
+3 o 6 caracteres que van del 0 a la f.
+0: completa ausencia de color
+f: mayor expresión de color*/
+
+/*3 caracteres:
+1er dígito: rojo f00
+2do dígito: verde 0f0
+3er dígito: azul 00f
+000: negro
+fff: blanco*/
+.color{
+    color: #00f;
+}
+/*6 caracteres: (accedemos a más combinaciones de colores)
+1er y 2do dígito: rojo
+3er y 4to dígito: verde
+5to y 6to dígito: azul*/
+.color{
+    color: #ff0000;
+}
+
+/*Ejemplo con convención rgb:*/
+.color{
+    color: rgb(0, 255, 255);
+}
+/*Se indican valores del 0 al 255
+El primer valor es el rojo
+El segundo valor es el verde
+El tercer valor es el azul*/
+
+/*Para asignarle bordes a los elementos:*/
+.color{
+    border:5px black dashed;
+}
+/*el borde puede ser: dashed(guiones), solid(línea), dotted(puntos), double, groove, ridge, inset, outset, none, hidden*/
+.color{
+    border-style: solid;
+    border-color: blue;
+    border-radius: 5px; /* Para hacer un borde redondeado */
+    border-width: 5px; /* para asignarle ancho al borde */
+}
+/* Border style permite asignarle el estilo al borde sin necesidad de tener que indicar el ancho ni el color del borde */
+
+/* Fondo de los elementos */
+#fondo{
+    background-color: rgba(255, 0, 0, 0.3);
+    opacity: 0.4; /* transparencia que tiene el elemento completo */
+    background-image: url('dibujo.jpg');
+    height: 400px;
+    background-size: contain; /* puede ser: auto, cover (se adapta a distintos tamaños de pantalla),contain, */
+    background-repeat: no-repeat;
+    background-position: left bottom; /* se indica primero posición en eje horizontal (left, center, right) y luego en eje vertical (top, center, bottom)*/
+}
+/* rgba también permite determinar opacidad o transparencia */
+
+.margen{
+    background-color: chocolate;
+    margin: 15px 20px 25px 30px; /* top right bottom left */
+    padding: 30px 25px 20px 15px; /* top right bottom left 
+    El padding está dentro del elemento*/
+    border: solid 5px black; /* va entre el padding y el margin */
+    height: 100px;
+    width: 50px;
+    overflow: scroll; /* visible, hidden, scroll
+    Es para las cosas que sobresalen */
+    outline: 3px solid red; /* entre el border y el margin */
+}
+/* Si en margin y padding ponemos un solo valor se aplica a todos los costados.
+Si en margin y padding ponemos 2 valores el 1ero se pone en vertical y el 2do en horizontal */
+
+.text{
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, sans-serif; /* pone la fuente en base a disponiibilidad: si no está la 1era usa la 2da y así sucesivamente */
+    /* puedo poner una fuente de Google font copiando el link en html */
+    text-align: center; /* right, left, justify, center */
+    text-decoration: overline; /* none, underline, line-through,overline */
+    text-shadow: 3px 5px 5px blue; /* movimiento a la derecha, movimiento hacia abajo, cantidad de blur, color*/
+}
+
+/* Los links en html pueden tener 4 estados posibles: (es MUY importante el orden en que los colocamos)
+1) Nunca ha sido visitado
+2) Ha sido visitado
+3) Pasamos el mouse por encima de él
+4) El link se encuentra activo (lo estoy presionando) */
+
+a:link{
+    color: blueviolet;
+}
+
+/* a:link --> le indica a css que queremos seleccionar los links no visitados */
+
+a:visited{
+    color: gray;
+}
+/* a:visited --> le indica a css que queremos seleccionar los links visitados */
+
+a:hover{
+    color: yellow;
+}
+/* a:hover --> le indica a css que queremos seleccionar los links a los que le pasamos el mouse por encima */
+
+a:active{
+    color: red;
+}
+/* a:active --> le indica a css que queremos seleccionar los links que se encuentran activos */
+
+/* Ahora vemos listas: (aunque usamos más tablas) */
+ul{
+    background-color: cyan;
+    list-style-type: georgian; /* none, circle, disc, georgian  */
+    /* none: saca los puntitos de la lista */
+    /* padding-left: 0;  */
+    /* list-style-position: inside; */
+}
+/* Las listas vienen por defecto con un padding de 40px */
+
+/* TABLAS: */
+table{
+    width: 100%;
+    border-collapse: collapse; /* Para que no haya espacio entre las celdas de la tabla */
+}
+th, td{
+    border: solid 1px #eee;
+    padding: 5px;
+}
+th{
+    background-color: tomato;
+    color: white;
+    text-align: left;
+}
+
+tr:nth-child(even){
+    background-color: #eee;
+}
+/* even: impar, odd: par */
+
+tr:hover{
+    background-color: #aaa; /* Para cambiar de color al pasar por encima de alguna de las filas de la tabla */
+    cursor: pointer; /* manito al pasar por encima de la tabla */
+}
+
+/* Display: none, block, inline */
+span{
+    display: block; /* para agregarle un salto de linea a la etiqueta span */
+    /* visibility: hidden */
+    max-width: 300px;
+    background-color: #f00;
+}
+/* display: block, viene por defecto en la mayoría de los elementos de html */
+
+.inline{
+    display: inline; /* le saca el salto de linea a la etiqueta div */
+}
+/* las etiquetas de html que vienen por defecto con un display de inline son: span, ancortype(links), img */
+
+#position{
+    position: relative; /* static, relative, fixed, absolute, sticky */
+    left: 20px; /* puede ser top, right y bottom tmbn*/
+}
+/* valor por defecto con el que vienen todos los elementos de html */
+
+.left{
+    float: left; /* toma el elemento y dentro de la etiqueta html en el cual se encuentre lo hace flotar hacia la izquierda */
+    width: 200px;
+    height: 200px;
+}
+
+.right{
+    float: right;
+}
+.container{
+    height: 200px;
+}
+
+.card{
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    margin: 0  15px;
+    padding: 10px 15px;
+    width: 33.3%;
+}
+
+.column{
+    margin: 0;
+    padding: 10px 0px;
+    width: 33.3%;
+}
+
+.inline-block{
+    display: inline-block; /* a inline-block se le puede asignar width y height, a inline no */
+    height: 55px;
+    background-color: #f00;
+}
+
+.center{
+    padding: 50px 0;
+    text-align: center;
+    width: 200px;
+    margin: 0 auto;
+    background-color: aqua;
 }
